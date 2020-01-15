@@ -14,8 +14,8 @@ export default function klona(x) {
 					writable: 1,
 				});
 			} else {
-			tmp[k] = klona(x[k]);
-		}
+				tmp[k] = klona(x[k]);
+			}
 		}
 		return tmp;
 	}
@@ -30,17 +30,17 @@ export default function klona(x) {
 
 	if (str === '[object Set]') {
 		tmp = new Set();
-		x.forEach(function (val) {
+		for(var val of x) {
 			tmp.add(klona(val));
-		});
+		};
 		return tmp;
 	}
 
 	if (str === '[object Map]') {
 		tmp = new Map();
-		x.forEach(function (val, key) {
-			tmp.set(klona(key), klona(val));
-		});
+		for(var valKey of x) {
+			tmp.set(klona(valKey[0]), klona(valKey[1]));
+		};
 		return tmp;
 	}
 
